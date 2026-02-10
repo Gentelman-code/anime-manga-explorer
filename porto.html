@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio CV Galih Adam Arkani - Customer Support Specialist Fresh Graduate dengan kemampuan multibahasa dan fast learner">
+    <meta name="keywords" content="Customer Support, Siswa, Multibahasa, DKV, Portfolio CV">
+    <meta name="author" content="Galih Adam Arkani">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Galih Adam Arkani - Customer Support Specialist">
+    <meta property="og:description" content="Portfolio CV Customer Support Specialist dengan kemampuan multibahasa dan pengalaman kepemimpinan tim">
+    <meta property="og:type" content="website">
+    
+    <title>Galih Adam Arkani - Customer Support Specialist Portfolio</title>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    
+    <style>
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            /* Colors - Professional Blue Theme */
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #2563eb;
+            --primary-blue-dark: #1e40af;
+            --accent-blue: #3b82f6;
+            --light-bg: #f3f4f6;
+            --white: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --border-gray: #e5e7eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Spacing */
+            --section-padding: 5rem 0;
+            --container-max: 1200px;
+        }
+        
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --light-bg: #111827;
+            --white: #1f2937;
+            --text-dark: #f9fafb;
+            --text-gray: #d1d5db;
+            --border-gray: #374151;
+        }
+        
+        /* ==================== GLOBAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            transition: background-color var(--transition-base);
+        }
+        
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        section {
+            padding: var(--section-padding);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-fast);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ==================== NAVIGATION BAR ==================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            transition: all var(--transition-base);
+        }
+        
+        [data-theme="dark"] .navbar {
+            background: rgba(31, 41, 55, 0.95);
+        }
+        
+        .navbar.scrolled {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width var(--transition-base);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all var(--transition-base);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.1);
+            background: var(--primary-blue-dark);
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: all var(--transition-base);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 58, 138, 0.4) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            color: white;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .hero-text .summary {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: justify;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--transition-base);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary-blue);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--primary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* ==================== SKILLS SECTION ==================== */
+        .skills {
+            background: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            border-radius: 2px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+        
+        .skill-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .skill-percentage {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: var(--border-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShine 2s infinite;
+        }
+        
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Soft Skills - Badge Style */
+        .soft-skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .soft-skill-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+        }
+        
+        [data-theme="dark"] .soft-skill-badge {
+            background: var(--light-bg);
+        }
+        
+        .soft-skill-badge:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .soft-skill-badge i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+        
+        /* Language Skills */
+        .language-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        [data-theme="dark"] .language-item {
+            background: var(--light-bg);
+        }
+        
+        .language-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .language-level {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            background: rgba(30, 58, 138, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+        
+        .language-description {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+        
+        /* ==================== LEARNING SECTION ==================== */
+        .learning {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .learning::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(30, 58, 138, 0.4) 0%, transparent 50%);
+        }
+        
+        .learning .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .learning .section-title {
+            color: white;
+        }
+        
+        .learning .section-title::after {
+            background: linear-gradient(90deg, white 0%, rgba(255, 255, 255, 0.5) 100%);
+        }
+        
+        .learning-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+        
+        .learning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .learning-badge i {
+            font-size: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .learning-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .webinar-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all var(--transition-base);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* ==================== EXPERIENCE SECTION ==================== */
+        .experience {
+            background: var(--white);
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon-wrapper {
+            grid-column: 2;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 2;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon-wrapper {
+            grid-column: 1;
+            order: -1;
+        }
+        
+        .timeline-icon-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-subtitle {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+        
+        /* ==================== PORTFOLIO SECTION ==================== */
+        .portfolio {
+            background: var(--light-bg);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+        
+        .portfolio-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .portfolio-number {
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.3;
+            margin-bottom: -1rem;
+        }
+        
+        .portfolio-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-body {
+            padding: 2rem;
+        }
+        
+        .portfolio-body p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .metric {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 0.3rem;
+        }
+        
+        /* ==================== CONTACT SECTION ==================== */
+        .contact {
+            background: var(--white);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+            transition: all var(--transition-base);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-top: 0.2rem;
+        }
+        
+        .contact-item h3 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        .contact-item a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .contact-form {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid var(--border-gray);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: white;
+            color: var(--text-dark);
+        }
+        
+        [data-theme="dark"] .form-control {
+            background: var(--white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all var(--transition-base);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: var(--shadow-lg);
+            background: var(--accent-blue);
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        footer p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: left var(--transition-base);
+                box-shadow: var(--shadow-lg);
+                padding: 2rem 0;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                padding: 1rem;
+                width: 100%;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                width: 250px;
+                height: 250px;
+                font-size: 6rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 80px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                grid-column: 1;
+                text-align: left;
+            }
+            
+            .timeline-icon-wrapper {
+                position: absolute;
+                left: 0;
+                grid-column: 1;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text .summary {
+                font-size: 0.95rem;
+            }
+            
+            .learning-badge {
+                font-size: 1.3rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .webinar-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ==================== UTILITIES ==================== */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary-blue-dark);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">GAA</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Beranda</a></li>
+                <li><a href="#skills" class="nav-link">Keahlian</a></li>
+                <li><a href="#learning" class="nav-link">Pelatihan</a></li>
+                <li><a href="#experience" class="nav-link">Pengalaman</a></li>
+                <li><a href="#portfolio" class="nav-link">Portofolio</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+                    <h1>Galih Adam Arkani</h1>
+                    <p class="subtitle">Customer Support Specialist</p>
+                    <p class="summary">
+                        Siswa DKV dengan kemampuan multibahasa (Inggris & Dasar Jepang) dan pengalaman kepemimpinan dalam tim produksi kreatif. Memiliki latar belakang kuat dalam pelayanan kemanusiaan melalui PMR yang melatih empati tinggi dan kesigapan. Tipe pembelajar cepat (Fast Learner) yang terbukti dengan penyelesaian 14 modul webinar beragam topik dalam 2 bulan terakhir. Terbiasa mengelola koordinasi tim (5+ orang) di bawah tekanan tenggat waktu. Mencari posisi Customer Support untuk mendedikasikan kemampuan komunikasi, pemecahan masalah, dan semangat melayani pelanggan.
+                    </p>
+                    <div class="hero-buttons">
+                        
+                        <a href="https://drive.google.com/drive/u/0/folders/11MTmWWK74jUNF4_4IvP1bqvXtwwi4YTW" class="btn btn-primary" target="_blank">
+                            Download CV
+                        </a>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-container" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-image">
+                        <img src="IMG_20260130_105653.jpg" alt="Foto Profil Galih Adam Arkani" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Keahlian Saya</h2>
+            <div class="skills-grid">
+                <!-- Hard Skills -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category-header">
+                        <i class="fas fa-laptop-code skill-icon"></i>
+                        <h3>Hard Skills</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Kepatuhan terhadap Peraturan</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Microsoft Office Suite</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Literasi Digital</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Berbicara & Menulis </span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Panggilan Keluar </span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category-header">
+                        <i class="fas fa-heart skill-icon"></i>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="soft-skills-list">
+                        <div class="soft-skill-badge">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <strong>Komunikasi</strong>
+                                <span style="color: var(--primary-blue); font-weight: 700; margin-left: 0.5rem;">95%</span>
+                            </div>
+                        </div>
+                        <div class="soft-skill-badge">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>Problem Solving</strong>
+                                <span style="color: var(--primary-blue); font-weight: 700; margin-left: 0.5rem;">90%</span>
+                            </div>
+                        </div>
+                        <div class="soft-skill-badge">
+                            <i class="fas fa-hands-helping"></i>
+                            <div>
+                                <strong>Empati / Omotenashi</strong>
+                                <span style="color: var(--primary-blue); font-weight: 700; margin-left: 0.5rem;">92%</span>
+                            </div>
+                        </div>
+                        <div class="soft-skill-badge">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Management waktu</strong>
+                                <span style="color: var(--primary-blue); font-weight: 700; margin-left: 0.5rem;">93%</span>
+                            </div>
+                        </div>
+                        <div class="soft-skill-badge">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Kepemimpinan</strong>
+                                <span style="color: var(--primary-blue); font-weight: 700; margin-left: 0.5rem;">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Language Skills -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-category-header">
+                        <i class="fas fa-language skill-icon"></i>
+                        <h3>Kemampuan Bahasa</h3>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-header">
+                            <span class="language-name">🇮🇩 Indonesia</span>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <p class="language-description">Komunikasi formal & informal sempurna</p>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-header">
+                            <span class="language-name">🇬🇧 Inggris</span>
+                            <span class="language-level">Intermediate / B1</span>
+                        </div>
+                        <p class="language-description">Paham instruksi & conversation dasar dengan baik</p>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-header">
+                            <span class="language-name">🇯🇵 Jepang</span>
+                            <span class="language-level">Basic / N5</span>
+                        </div>
+                        <p class="language-description">Sapaan + budaya Omotenashi (keramah-tamahan) relevan untuk pelayanan pelanggan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== LEARNING / PELATIHAN SECTION ==================== -->
+    <section class="learning" id="learning">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Pengembangan Diri & Pelatihan</h2>
+            <div class="learning-content" data-aos="fade-up" data-aos-delay="100">
+                <div class="learning-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Fast Learner: 14 Webinar dalam 2 Bulan</span>
+                </div>
+                <p class="learning-description">
+                    Peserta aktif marathon belajar eduaksi. Menyelesaikan 14 sesi pelatihan intensif topik beragam (termasuk Public Speaking & Personal Branding, Komunikasi, Teknologi). Bukti adaptabilitas tinggi dan daya tangkap materi baru berbeda-beda.
+                </p>
+            </div>
+            <div class="webinar-stats">
+                <div class="stat-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Webinar Completed</div>
+                </div>
+                <div class="stat-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Bulan Marathon</div>
+                </div>
+                <div class="stat-card" data-aos="flip-left" data-aos-delay="400">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Tingkat Penyelesaian</div>
+                </div>
+                <div class="stat-card" data-aos="flip-left" data-aos-delay="500">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-number">High</div>
+                    <div class="stat-label">Adaptabilitas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Pengalaman & Ekstrakurikuler</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-icon-wrapper">
+                        <div class="timeline-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Klub Bahasa (Inggris & Jepang)</h3>
+                        <p class="timeline-subtitle">SMKN 2 Yogyakarta</p>
+                        <p class="timeline-description">
+                            Komunikasi lintas budaya dan etika sopan santun. Melatih verbal & listening skills secara rutin di luar jam sekolah. Mempelajari budaya keramah-tamahan Jepang (Omotenashi) yang sangat relevan untuk pelayanan pelanggan kelas dunia.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-icon-wrapper">
+                        <div class="timeline-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>PMR (Palang Merah Remaja)</h3>
+                        <p class="timeline-subtitle">Anggota Aktif</p>
+                        <p class="timeline-description">
+                            Mengembangkan empati tinggi dan kesigapan dalam situasi darurat. Terlatih untuk tetap tenang dan memberikan bantuan dengan cepat dan tepat. Pengalaman ini membentuk kemampuan untuk merespons kebutuhan orang lain dengan penuh perhatian dan kepedulian.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-icon-wrapper">
+                        <div class="timeline-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Tim Produksi Kreatif DKV</h3>
+                        <p class="timeline-subtitle">Team Leader - 10+ Anggota</p>
+                        <p class="timeline-description">
+                            Memimpin koordinasi tim dalam proyek produksi kreatif dengan deadline ketat. Mengelola pembagian tugas, komunikasi tim, dan memastikan kualitas output tetap terjaga di bawah tekanan. Mengasah kemampuan leadership, delegasi, dan conflict resolution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== PORTFOLIO SECTION ==================== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Portofolio & Case Studies</h2>
+            <div class="portfolio-grid">
+                <!-- Case Study 1 -->
+                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="portfolio-header">
+                        <div class="portfolio-number">01</div>
+                        <div class="portfolio-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Roleplay: Customer Complaint Resolution</h3>
+                    </div>
+                    <div class="portfolio-body">
+                        <p>
+                            Simulasi penanganan komplain pelanggan melalui live chat. Menerapkan teknik active listening, empati, dan problem-solving untuk mengubah pelanggan kecewa menjadi puas dalam waktu singkat.
+                        </p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">< 5 min</span>
+                                <span class="metric-label">Response Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Resolution Rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.8/5</span>
+                                <span class="metric-label">CSAT Score</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">3</span>
+                                <span class="metric-label">Follow-ups</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="portfolio-header">
+                        <div class="portfolio-number">02</div>
+                        <div class="portfolio-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Public Speaking Webinar Feedback</h3>
+                    </div>
+                    <div class="portfolio-body">
+                        <p>
+                            Mengikuti dan aktif dalam webinar Public Speaking & Personal Branding. Menerima feedback positif tentang clarity of message, engagement dengan pembimbing, dan kemampuan menyampaikan informasi kompleks dengan sederhana.
+                        </p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">50+</span>
+                                <span class="metric-label">Peserta</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.7/5</span>
+                                <span class="metric-label">Audience Rating</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">15+</span>
+                                <span class="metric-label">Q&A Handled</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Excellent</span>
+                                <span class="metric-label">Clarity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 3 -->
+                <div class="portfolio-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="portfolio-header">
+                        <div class="portfolio-number">03</div>
+                        <div class="portfolio-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Koordinasi Tim DKV: Multi-Task Management</h3>
+                    </div>
+                    <div class="portfolio-body">
+                        <p>
+                            Mengelola 5+ anggota tim dalam proyek produksi dengan multiple deliverables. Menggunakan pendekatan ticket-based system untuk tracking progress, prioritizing tasks, dan ensuring quality control seperti CS team handling.
+                        </p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">10+</span>
+                                <span class="metric-label">Team Members</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">100%</span>
+                                <span class="metric-label">On-Time Delivery</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">12</span>
+                                <span class="metric-label">Tasks Managed</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Zero</span>
+                                <span class="metric-label">Escalations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Hubungi Saya</h2>
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Lokasi</h3>
+                            <p>Yogyakarta, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:adamgalih489@gmail.com">Adamgalih@email.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p><a href="https://wa.me/6285742512993" target="_blank">085742512993</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-facebook"></i>
+                        <div>
+                            <h3>Facebook</h3>
+                            <p><a href="https://www.facebook.com/profile.php?id=61582320777128&mibextid=rS40aB7S9Ucbxw6v" target="_blank">Galih Adam Arkani</a></p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/6285742512993" target="_blank" class="social-link" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        
+                        <a href="mailto:adamgalih489@gmail.com" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/g_man_gentle?igsh=MW96c3ZjejN5N3R1ZQ==" target="_blank" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Galih Adam Arkani. All rights reserved. | Customer Support Specialist Portfolio</p>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // ==================== INITIALIZE AOS ====================
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-in-out'
+        });
+        
+        // ==================== NAVBAR FUNCTIONALITY ====================
+        const navbar = document.getElementById('navbar');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking nav link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // ==================== DARK MODE TOGGLE ====================
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        
+        // Update icon based on current theme
+        if (currentTheme === 'dark') {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            if (newTheme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // ==================== SCROLL TO TOP BUTTON ====================
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // ==================== SMOOTH SCROLLING ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // ==================== CONTACT FORM SUBMISSION ====================
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Here you would typically send the data to a server
+            // For now, we'll just show an alert and log to console
+            console.log('Form submitted:', formData);
+            
+            alert('Terima kasih! Pesan Anda telah diterima. Saya akan segera menghubungi Anda kembali.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // ==================== DOWNLOAD CV FUNCTIONALITY ====================
+        
+     
+        
+        // ==================== SKILL PROGRESS ANIMATION ====================
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        const skillsSection = document.querySelector('.skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+        
+        // ==================== TYPING EFFECT FOR SUBTITLE (OPTIONAL) ====================
+        // Uncomment if you want a typing effect on the subtitle
+        /*
+        const subtitle = document.querySelector('.hero-text .subtitle');
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                subtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // Start typing effect after a short delay
+        setTimeout(typeWriter, 500);
+        */
+    </script>
+    
+    <!-- 
+    ==================== EDIT INSTRUCTIONS ====================
+    
+    Cara mengedit website ini:
+    
+    1. MENGUBAH INFORMASI PRIBADI:
+       - Cari "Galih Adam Arkani" dan ganti dengan nama Anda
+       - Update foto profil: ganti icon <i class="fas fa-user"></i> dengan <img src="foto-anda.jpg" alt="Foto">
+       
+    2. MENGUBAH KONTAK:
+       - Email: cari "galihadamarkani@email.com" dan ganti
+       - WhatsApp: cari "+62 812-3456-789" dan ganti dengan nomor Anda
+       - LinkedIn: update link "linkedin.com/in/galihadamarkani"
+       
+    3. MENGUBAH WARNA:
+       - Buka CSS Variables di bagian :root
+       - Ubah --primary-blue dan --accent-blue sesuai keinginan
+       
+    4. MENAMBAH/MENGURANGI SKILLS:
+       - Temukan section .skills-grid
+       - Copy-paste .skill-item untuk menambah skill baru
+       - Ubah persentase dan nama skill
+       
+    5. MENGUBAH PORTFOLIO:
+       - Temukan section .portfolio-grid
+       - Edit konten di dalam .portfolio-card
+       - Ubah metrics sesuai data Anda
+       
+    6. MENAMBAH CV DOWNLOAD:
+       - Upload file CV Anda (format PDF)
+       - Uncomment kode di bagian "DOWNLOAD CV FUNCTIONALITY"
+       - Ganti 'path/to/cv.pdf' dengan path file CV Anda
+       
+    7. HOSTING DI GITHUB PAGES:
+       - Buat repository baru di GitHub
+       - Upload file ini sebagai index.html
+       - Aktifkan GitHub Pages di Settings > Pages
+       - Website akan tersedia di username.github.io/repository-name
+    
+    ==================== END EDIT INSTRUCTIONS ====================
+    -->
+    
+</body>
+</html>
