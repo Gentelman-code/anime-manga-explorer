@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime & Manga Explorer</title>
+    <!-- Tailwind & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nunito:wght@300;400;600;700;800;900&display=swap');
+        
+        :root {
+            --bg-deep: #050508;
+            --accent-primary: #e040fb;
+            --dropdown-bg: #1a1a2e;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(224, 64, 251, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(124, 77, 255, 0.12) 0%, transparent 50%);
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        .glass-effect {
+            background: rgba(10, 10, 25, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ffffff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-select {
+            background-color: var(--dropdown-bg) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-select:hover {
+            border-color: var(--accent-primary) !important;
+        }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-container:focus-within {
+            border-color: var(--accent-primary);
+            background: rgba(224, 64, 251, 0.05);
+            box-shadow: 0 0 20px rgba(224, 64, 251, 0.2);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 10px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #app-root { min-height: 100vh; }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <div id="app-root"></div>
+
+    <script>
+        /**
+         * ANIME & MANGA世界 - JAVASCRIPT CORE
+         */
+
+        const CONFIG = {
+            API_BASE: 'https://api.jikan.moe/v4',
+            GENRES: [
+                { id: 1, name: 'Action' }, { id: 2, name: 'Adventure' }, { id: 4, name: 'Comedy' },
+                { id: 8, name: 'Drama' }, { id: 10, name: 'Fantasy' }, { id: 22, name: 'Romance' },
+                { id: 24, name: 'Sci-Fi' }, { id: 36, name: 'Slice of Life' }, { id: 37, name: 'Supernatural' },
+                { id: 12, name: 'Hentai' }, { id: 9, name: 'Ecchi' }, { id: 11, name: 'Game' },
+                { id: 35, name: 'Harem' }, { id: 14, name: 'Horror' }, { id: 16, name: 'Magic' },
+                { id: 19, name: 'Music' }, { id: 7, name: 'Mystery' }, { id: 17, name: 'Martial Arts' },
+                { id: 18, name: 'Mecha' }, { id: 38, name: 'Military' }, { id: 32, name: 'Vampire' },
+                { id: 41, name: 'Thriller' }
+            ].sort((a,b) => a.name.localeCompare(b.name)),
+            YEARS: Array.from({ length: 2026 - 1964 + 1 }, (_, i) => 1964 + i).reverse()
+        };
+
+        let state = {
+            itemList: [],
+            page: 1,
+            hasNextPage: false,
+            loading: false,
+            searchQuery: '',
+            filter: {
+                mode: 'top',
+                year: '',
+                genre: ''
+            }
+        };
+
+        const initApp = () => {
+            const root = document.getElementById('app-root');
+            root.innerHTML = `
+                <!-- Navbar -->
+                <header class="sticky top-0 z-[100] glass-effect shadow-2xl">
+                    <div class="container mx-auto px-4 py-4 flex flex-col lg:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#e040fb] rounded-2xl flex items-center justify-center shadow-lg border border-white/20">
+                                <span class="text-white font-black text-2xl">A</span>
+                            </div>
+                            <h1 class="text-2xl md:text-3xl font-black font-cinzel tracking-tight animate-float">
+                                ANIME<span class="gradient-text">EXPLORER</span>
+                            </h1>
+                        </div>
+                        <div id="filter-controls" class="flex flex-wrap items-center justify-center gap-4"></div>
+                    </div>
+                </header>
+
+                <main class="container mx-auto px-4 py-8">
+                    <!-- Static Permanent Search Box -->
+                    <div class="max-w-2xl mx-auto mb-12">
+                        <div class="search-container flex items-center gap-3 p-1 rounded-2xl">
+                            <div class="bg-[#e040fb] w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-[#e040fb]/20">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <input id="input-search" type="text" placeholder="Cari anime atau manga" 
+                                class="bg-transparent border-none outline-none text-base w-full font-bold text-white placeholder:text-white/40 px-2 py-3">
+                            <button id="btn-search-trigger" class="hidden sm:block mr-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-xs font-black transition-all">
+                                CARI
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="search-banner" class="hidden mb-12 p-6 bg-[#e040fb]/20 rounded-3xl border border-[#e040fb]/50 flex items-center justify-between"></div>
+                    
+                    <div id="anime-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"></div>
+                    
+                    <div id="loader" class="hidden flex flex-col items-center justify-center py-20 gap-4">
+                        <div class="loader"></div>
+                        <p class="font-black text-[#e040fb] tracking-widest animate-pulse uppercase">Memuat Konten...</p>
+                    </div>
+
+                    <div id="pagination" class="mt-16 flex justify-center hidden">
+                        <button id="btn-load-more" class="px-10 py-4 rounded-2xl bg-[#e040fb] font-black text-white shadow-xl hover:scale-105 active:scale-95 transition-all">
+                            TAMPILKAN LEBIH BANYAK <i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </main>
+
+                <!-- Modal Container -->
+                <div id="modal-root"></div>
+            `;
+
+            renderFilters();
+            setupEvents();
+            fetchData();
+        };
+
+        const renderFilters = () => {
+            const container = document.getElementById('filter-controls');
+            // Menampilkan filter tahun/genre hanya untuk anime (Top & Donghua)
+            const showExtra = state.filter.mode === 'top' || state.filter.mode === 'donghua';
+
+            container.innerHTML = `
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] uppercase font-black text-[#e040fb] ml-1">Kategori</span>
+                    <select id="sel-mode" class="custom-select rounded-xl px-4 py-2 text-xs font-bold outline-none min-w-[140px]">
+                        <optgroup label="Anime">
+                            <option value="top" ${state.filter.mode === 'top' ? 'selected' : ''}>Top Anime</option>
+                            <option value="donghua" ${state.filter.mode === 'donghua' ? 'selected' : ''}>Donghua (China)</option>
+                            <option value="airing" ${state.filter.mode === 'airing' ? 'selected' : ''}>Sedang Tayang</option>
+                            <option value="upcoming" ${state.filter.mode === 'upcoming' ? 'selected' : ''}>Akan Datang</option>
+                        </optgroup>
+                        <optgroup label="Bacaan">
+                            <option value="manga" ${state.filter.mode === 'manga' ? 'selected' : ''}>Manga (Jepang)</option>
+                            <option value="manhwa" ${state.filter.mode === 'manhwa' ? 'selected' : ''}>Manhwa (Korea)</option>
+                            <option value="manhua" ${state.filter.mode === 'manhua' ? 'selected' : ''}>Manhua (China)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                ${showExtra ? `
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[10px] uppercase font-black text-[#e040fb] ml-1">Tahun</span>
+                        <select id="sel-year" class="custom-select rounded-xl px-4 py-2 text-xs font-bold outline-none min-w-[120px]">
+                            <option value="">Semua Tahun</option>
+                            ${CONFIG.YEARS.map(y => `<option value="${y}" ${state.filter.year == y ? 'selected' : ''}>${y}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[10px] uppercase font-black text-[#e040fb] ml-1">Genre</span>
+                        <select id="sel-genre" class="custom-select rounded-xl px-4 py-2 text-xs font-bold outline-none min-w-[120px]">
+                            <option value="">Semua Genre</option>
+                            ${CONFIG.GENRES.map(g => `<option value="${g.id}" ${state.filter.genre == g.id ? 'selected' : ''}>${g.name}</option>`).join('')}
+                        </select>
+                    </div>
+                ` : ''}
+            `;
+
+            document.getElementById('sel-mode').onchange = (e) => {
+                state.filter.mode = e.target.value;
+                state.page = 1;
+                renderFilters();
+                fetchData();
+            };
+            if(showExtra) {
+                document.getElementById('sel-year').onchange = (e) => { state.filter.year = e.target.value; state.page = 1; fetchData(); };
+                document.getElementById('sel-genre').onchange = (e) => { state.filter.genre = e.target.value; state.page = 1; fetchData(); };
+            }
+        };
+
+        const fetchData = async (isLoadMore = false) => {
+            if (state.loading) return;
+            state.loading = true;
+            document.getElementById('loader').classList.remove('hidden');
+            if(!isLoadMore) {
+                document.getElementById('anime-grid').innerHTML = '';
+            }
+
+            let url = '';
+            const mode = state.filter.mode;
+            const isMangaMode = ['manga', 'manhwa', 'manhua'].includes(mode);
+            const endpoint = isMangaMode ? 'manga' : 'anime';
+
+            // Base URL construction
+            if (state.searchQuery) {
+                url = `${CONFIG.API_BASE}/${endpoint}?q=${encodeURIComponent(state.searchQuery)}&order_by=score&sort=desc&limit=24&page=${state.page}`;
+                updateSearchBanner(true);
+            } else {
+                updateSearchBanner(false);
+                if (mode === 'top') {
+                    url = `${CONFIG.API_BASE}/anime?limit=24&page=${state.page}&order_by=score&sort=desc`;
+                    if (state.filter.year) url += `&start_date=${state.filter.year}-01-01&end_date=${state.filter.year}-12-31`;
+                    if (state.filter.genre) url += `&genres=${state.filter.genre}`;
+                } else if (mode === 'donghua') {
+                    url = `${CONFIG.API_BASE}/anime?type=ona&limit=24&page=${state.page}&order_by=score&sort=desc`;
+                    if (state.filter.year) url += `&start_date=${state.filter.year}-01-01&end_date=${state.filter.year}-12-31`;
+                    if (state.filter.genre) url += `&genres=${state.filter.genre}`;
+                } else if (mode === 'airing') {
+                    url = `${CONFIG.API_BASE}/top/anime?filter=airing&limit=24&page=${state.page}`;
+                } else if (mode === 'upcoming') {
+                    url = `${CONFIG.API_BASE}/top/anime?filter=upcoming&limit=24&page=${state.page}`;
+                } else if (mode === 'manga') {
+                    url = `${CONFIG.API_BASE}/manga?type=manga&order_by=score&sort=desc&limit=24&page=${state.page}`;
+                } else if (mode === 'manhwa') {
+                    url = `${CONFIG.API_BASE}/manga?type=manhwa&order_by=score&sort=desc&limit=24&page=${state.page}`;
+                } else if (mode === 'manhua') {
+                    url = `${CONFIG.API_BASE}/manga?type=manhua&order_by=score&sort=desc&limit=24&page=${state.page}`;
+                }
+            }
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                state.hasNextPage = data.pagination.has_next_page;
+                renderCards(data.data, isLoadMore);
+            } catch (err) {
+                console.error("Fetch Error:", err);
+            } finally {
+                state.loading = false;
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('pagination').classList.toggle('hidden', !state.hasNextPage);
+            }
+        };
+
+        const renderCards = (items, isAppend) => {
+            const grid = document.getElementById('anime-grid');
+            if(!isAppend) grid.innerHTML = '';
+
+            if (items.length === 0 && !isAppend) {
+                grid.innerHTML = '<div class="col-span-full py-20 text-center opacity-50 font-black tracking-widest uppercase">Data tidak ditemukan.</div>';
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-black rounded-xl overflow-hidden cursor-pointer transform transition-all hover:scale-105 border border-white/10 hover:border-[#e040fb]/50";
+                card.innerHTML = `
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="${item.images.jpg.large_image_url}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[9px] font-black px-2 py-0.5 rounded bg-[#e040fb] text-white uppercase">${item.type || 'N/A'}</span>
+                            <div class="flex items-center gap-1 bg-yellow-400 px-1.5 py-0.5 rounded text-black font-black text-[10px]">
+                                <i class="fas fa-star"></i> ${item.score || 'N/A'}
+                            </div>
+                        </div>
+                        <h3 class="text-xs font-black line-clamp-2 text-white group-hover:text-[#e040fb] leading-tight uppercase">${item.title}</h3>
+                    </div>
+                `;
+                card.onclick = () => showModal(item);
+                grid.appendChild(card);
+            });
+        };
+
+        const updateSearchBanner = (show) => {
+            const banner = document.getElementById('search-banner');
+            if (show) {
+                banner.classList.remove('hidden');
+                banner.innerHTML = `
+                    <h2 class="text-xl font-black text-white">
+                        <i class="fas fa-search text-[#e040fb] mr-2"></i>
+                        Hasil Pencarian: <span class="text-[#e040fb] italic">"${state.searchQuery}"</span>
+                    </h2>
+                    <button onclick="clearSearch()" class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl font-bold transition-all text-sm uppercase">Reset</button>
+                `;
+            } else {
+                banner.classList.add('hidden');
+            }
+        };
+
+        const showModal = (item) => {
+            const modalRoot = document.getElementById('modal-root');
+            modalRoot.innerHTML = `
+                <div id="modal-overlay" class="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
+                    <div class="relative w-full max-w-4xl h-[85vh] glass-effect rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-2xl border-white/20">
+                        <button onclick="closeModal()" class="absolute top-4 right-4 z-[1100] w-10 h-10 rounded-full bg-black/80 flex items-center justify-center hover:bg-red-500 transition-colors">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="w-full md:w-1/3 h-64 md:h-full flex-shrink-0">
+                            <img src="${item.images.jpg.large_image_url}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full md:w-2/3 flex flex-col h-full bg-[#080815] overflow-y-auto custom-scrollbar p-8">
+                            <h2 class="text-2xl font-black font-cinzel mb-2 leading-tight uppercase">${item.title}</h2>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${item.genres.map(g => `<span class="text-[10px] font-black bg-[#e040fb] px-3 py-1 rounded-full uppercase">${g.name}</span>`).join('')}
+                            </div>
+                            
+                            <div class="bg-white/5 p-4 rounded-2xl mb-8 grid grid-cols-2 gap-4 border border-white/10">
+                                <div class="text-center border-r border-white/10">
+                                    <p class="text-[10px] uppercase text-white/50 font-black">Score</p>
+                                    <p class="text-2xl font-black text-yellow-400">${item.score || '0.00'}</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[10px] uppercase text-white/50 font-black">Rank</p>
+                                    <p class="text-2xl font-black">${item.rank ? `#${item.rank}` : 'N/A'}</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="font-black text-[#e040fb] border-b border-[#e040fb]/30 pb-1 mb-3 uppercase">Sinopsis</h3>
+                                    <p class="text-sm leading-relaxed text-white/80 font-bold italic">${item.synopsis || 'Maaf, sinopsis tidak tersedia.'}</p>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-[#e040fb] border-b border-[#e040fb]/30 pb-1 mb-4 uppercase">Detail Informasi</h3>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                                        <div class="p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#e040fb]/30 transition-all">
+                                            <p class="text-white/40 mb-1">${item.type === 'Manga' ? 'Authors' : 'Studios'}</p>
+                                            <p class="font-black">${(item.studios || item.authors || []).map(s => s.name).join(', ') || 'N/A'}</p>
+                                        </div>
+                                        <div class="p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#e040fb]/30 transition-all">
+                                            <p class="text-white/40 mb-1">Status</p>
+                                            <p class="font-black">${item.status || '?'}</p>
+                                        </div>
+                                        <div class="p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#e040fb]/30 transition-all">
+                                            <p class="text-white/40 mb-1">${item.episodes ? 'Episodes' : 'Chapters/Volumes'}</p>
+                                            <p class="font-black">${item.episodes || item.chapters || '?'} / ${item.volumes || '?'}</p>
+                                        </div>
+                                        <div class="p-3 bg-white/5 rounded-xl border border-white/5 hover:border-[#e040fb]/30 transition-all">
+                                            <p class="text-white/40 mb-1">Source</p>
+                                            <p class="font-black">${item.source || 'Original'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            document.getElementById('modal-root').innerHTML = '';
+            document.body.style.overflow = 'auto';
+        };
+
+        window.clearSearch = () => {
+            state.searchQuery = '';
+            state.page = 1;
+            document.getElementById('input-search').value = '';
+            fetchData();
+        };
+
+        const performSearch = () => {
+            const input = document.getElementById('input-search');
+            if (input.value.trim() !== state.searchQuery) {
+                state.searchQuery = input.value.trim();
+                state.page = 1;
+                fetchData();
+            }
+        };
+
+        const setupEvents = () => {
+            const input = document.getElementById('input-search');
+            input.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter') performSearch();
+            });
+
+            document.getElementById('btn-search-trigger').onclick = performSearch;
+
+            document.getElementById('btn-load-more').onclick = () => {
+                state.page++;
+                fetchData(true);
+            };
+        };
+
+        window.onload = initApp;
+
+    </script>
+</body>
+</html>
